@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-books Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Learn-the-Unlearned</h1>
+        <h5>"I just write for myself, you are just invited to read."</h5>
+        <nav>
+            <!--<ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">E-books</a></li>
+                <li><a href="#">About</a></li>
+            </ul>-->
+        </nav>
+    </header>
+    <main>
+        <section id="ebooks">
+            <h2>My-books</h2>
+            <div id="ebook-list"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #adefffd1;
+
+}
+
+header {
+    background-color: #00203fff;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#ebooks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+#ebook-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.ebook {
+    border: 1px solid rgb(6, 77, 148);
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ebook img {
+    width: 100%;
+    height: 500px;
+   /* object-fit: contain;*/
+    border-radius: 10px 10px 0 0;
+}
+
+.ebook h3 {
+    margin-top: 0;
+}
+
+</style>
+<script>
+
+const ebookList = document.getElementById('ebook-list');
+
+const ebooks = [
+    {
+        title: 'Fourth colour of indian flag(Chapter 1)',
+        author: 'Monish',
+        image: 'Capture.jpg',
+        pdf: 'Fourth colour of indian flag.pdf'
+    },
+   
+    // Add more e-books here...
+];
+
+ebooks.forEach((ebook) => {
+    const ebookElement = document.createElement('div');
+    ebookElement.classList.add('ebook');
+    ebookElement.innerHTML = `
+        <img src="${ebook.image}" alt="${ebook.title}">
+        <h3>${ebook.title}</h3>
+        <p>Author: ${ebook.author}</p>
+        <a href="${ebook.pdf}" download><button>Download PDF</button></a>
+    `;
+    ebookList.appendChild(ebookElement);
+});
+
+</script>
+</body>
+</html>
